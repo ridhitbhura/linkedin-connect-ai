@@ -32,7 +32,7 @@ cd linkedin-connect-ai
 2. **Configure API Keys**
 
 - Modify the `config.js` file to include your name, OpenAI API key, and other relevant information.
-- [https://platform.openai.com/api-keys](Refer here for API keys) - You need to load your account with credits before using your API key successfully. 
+- [Refer here for API keys](https://platform.openai.com/api-keys) - You need to load your account with credits before using your API key successfully. 
 
 ```
 javascript
