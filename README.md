@@ -3,6 +3,7 @@
 A Chrome extension that creates personalized LinkedIn connection requests using AI, designed to improve your networking and job search effectiveness.
 
 ## Demo
+https://www.loom.com/share/e7a2e5833319434f9c77c02a64d32245?sid=bb3c35fb-ec87-437f-91e2-2ebf328b205c
 
 ## Why This Extension?
 
