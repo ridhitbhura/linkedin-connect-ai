@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 380px;
+            min-height: 600px;
+            padding: 16px;
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #000;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            color: #000;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        input, textarea {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+            color: #000;
+        }
+
+        #autofillButton {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            border: 1px solid #eaeaea;
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
+        #autofillButton:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        #generateMessageButton {
+            background: #000;
+            color: #fff;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        #generateMessageButton:hover {
+            background: #333;
+        }
+
+        #copyButton, #viewHistoryButton {
+            width: 100%;
+            border: 1px solid #eaeaea;
+        }
+
+        #copyButton:hover, #viewHistoryButton:hover {
+            border-color: #000;
+        }
+
+        .char-count {
+            font-size: 11px;
+            color: #666;
+            text-align: right;
+        }
+
+        .copy-notification {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: #000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            transition: all 0.2s;
+            transform: translateY(0);
+        }
+
+        .copy-notification.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        #errorMessage {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            background: #f43f5e;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            display: none;
+        }
+
+        /* Autofill icon - now using a more modern refresh icon */
+        .autofill-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+
+        #generatedMessage {
+            background: #fafafa;
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        #historyButton {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            border: 1px solid #eaeaea;
+            padding: 6px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #historyButton:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        /* Optional: Add an icon for history button */
+        .history-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-row">
+            <h3>Outreach Generator</h3>
+            <button id="historyButton">
+                <svg class="history-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                History
+            </button>
+        </div>
+        
+        <div class="field">
+            <div class="header-row">
+                <label for="nameField">Name</label>
+                <button id="autofillButton">
+                    <svg class="autofill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-8c0 2.21-1.79 4-4 4s-4-1.79-4-4 1.79-4 4-4 4 1.79 4 4z" stroke-width="1.5"/>
+                    </svg>
+                    Autofill
+                </button>
+            </div>
+            <input type="text" id="nameField" placeholder="Enter name">
+        </div>
+
+        <div class="field">
+            <label for="companyField">Company</label>
+            <input type="text" id="companyField" placeholder="Enter company">
+        </div>
+
+        <div class="field">
+            <label for="roleField">Role</label>
+            <input type="text" id="roleField" value="Software Engineer">
+        </div>
+
+        <div class="field">
+            <label for="educationField">Education/Work Overlap</label>
+            <textarea id="educationField" placeholder="Add overlaps" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+            <label for="generatedMessage">Generated Message</label>
+            <textarea id="generatedMessage" readonly rows="4"></textarea>
+            <div id="charCount" class="char-count">0 / 300</div>
+        </div>
+
+        <button id="generateMessageButton">Generate Message</button>
+        <button id="copyButton">Copy to Clipboard</button>
+    </div>
+
+    <div id="copyNotification" class="copy-notification hidden">
+        Copied to clipboard!
+    </div>
+    <div id="errorMessage"></div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

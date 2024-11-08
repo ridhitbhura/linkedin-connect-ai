@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 380px;
+            min-height: 600px;
+            padding: 16px;
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #000;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
+            color: #000;
+        }
+
+        #goBackButton {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            border: 1px solid #eaeaea;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+        }
+
+        #goBackButton:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        .outreach-item {
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .outreach-item p {
+            margin: 6px 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .outreach-item strong {
+            color: #000;
+        }
+
+        .outreach-item:hover {
+            border-color: #000;
+        }
+
+        hr {
+            display: none;  /* Removed separators in favor of cards */
+        }
+
+        /* Back arrow icon styles */
+        .back-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            border: 1px solid #eaeaea;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+        }
+
+        .action-button:hover {
+            border-color: #000;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-row">
+        <h3>Outreach History</h3>
+        <button id="goBackButton">
+            <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M19 12H5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back
+        </button>
+    </div>
+    <div id="outreachHistory"></div>
+    <script src="history.js"></script>
+</body>
+</html>

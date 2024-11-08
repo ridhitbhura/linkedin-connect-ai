@@ -1,0 +1,123 @@
+/* Base styles */
+body {
+  width: 300px;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+}
+
+/* Typography */
+h3 {
+  text-align: center;
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Form elements */
+.field {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+input, 
+textarea {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+input:focus, 
+textarea:focus {
+  border-color: #0073b1;
+  outline: none;
+}
+
+/* Specific textarea heights */
+#educationField {
+  height: 32px;
+}
+
+#generatedMessage {
+  height: 80px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005582;
+}
+
+#autofillButton {
+  width: auto;
+  padding: 4px 8px;
+  background-color: #666;
+}
+
+#autofillButton:hover {
+  background-color: #555;
+}
+
+#copyButton {
+  background-color: #4CAF50;
+}
+
+#copyButton:hover {
+  background-color: #45a049;
+}
+
+/* Layout components */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* Character count */
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  color: #666;
+}
+
+.char-count.warning {
+  color: #ff9800;
+}
+
+.char-count.error {
+  color: #f44336;
+}
+
+/* Notifications */
+.copy-notification {
+  text-align: center;
+  color: green;
+}
+
+.copy-notification.show {
+  display: block;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: #999;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
